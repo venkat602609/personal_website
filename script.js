@@ -420,6 +420,12 @@ function activateToolTab(targetId) {
   });
 }
 
+function syncToolTabFromHash() {
+  const targetId = window.location.hash.replace("#", "");
+  const matchingPanel = toolPanels.find((panel) => panel.id === targetId);
+  activateToolTab(matchingPanel ? targetId : "mortgage-tool");
+}
+
 homePriceInput.addEventListener("input", deriveLoanAmount);
 downPaymentInput.addEventListener("input", deriveLoanAmount);
 loanAmountInput.addEventListener("input", () => {
@@ -451,7 +457,9 @@ toolTabs.forEach((tab) => {
   });
 });
 
+window.addEventListener("hashchange", syncToolTabFromHash);
+
 deriveLoanAmount();
 updateOutputs();
 updateInvestmentOutputs();
-activateToolTab("mortgage-tool");
+syncToolTabFromHash();

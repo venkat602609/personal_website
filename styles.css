@@ -244,12 +244,16 @@ h3 {
 }
 
 .tool-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 46px;
   padding: 0 18px;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.56);
   color: var(--text);
+  text-decoration: none;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
