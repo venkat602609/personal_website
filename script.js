@@ -43,6 +43,32 @@ const liveInputs = [
   startDateInput,
 ];
 
+const investmentForm = document.querySelector("#investment-form");
+const initialInvestmentInput = document.querySelector("#initialInvestment");
+const monthlyContributionInput = document.querySelector("#monthlyContribution");
+const investmentYearsInput = document.querySelector("#investmentYears");
+const annualReturnInput = document.querySelector("#annualReturn");
+const returnVarianceInput = document.querySelector("#returnVariance");
+const compoundFrequencyInput = document.querySelector("#compoundFrequency");
+
+const totalContributedOutput = document.querySelector("#totalContributed");
+const baseEndingValueOutput = document.querySelector("#baseEndingValue");
+const investmentGainOutput = document.querySelector("#investmentGain");
+const annualizedReturnOutput = document.querySelector("#annualizedReturn");
+const lowEndingValueOutput = document.querySelector("#lowEndingValue");
+const highEndingValueOutput = document.querySelector("#highEndingValue");
+const varianceBandOutput = document.querySelector("#varianceBand");
+const chartCaptionOutput = document.querySelector("#chartCaption");
+const growthChart = document.querySelector("#growthChart");
+const investmentInputs = [
+  initialInvestmentInput,
+  monthlyContributionInput,
+  investmentYearsInput,
+  annualReturnInput,
+  returnVarianceInput,
+  compoundFrequencyInput,
+];
+
 let loanAmountManuallyEdited = false;
 
 function clamp(value, min = 0) {
@@ -51,6 +77,10 @@ function clamp(value, min = 0) {
 
 function formatCurrency(value) {
   return currencyFormatter.format(Math.round(value || 0));
+}
+
+function formatPercent(value) {
+  return `${Number(value || 0).toFixed(1)}%`;
 }
 
 function parseMonthInput(value) {
@@ -212,6 +242,168 @@ function updateOutputs() {
   renderSchedule(schedule.rows);
 }
 
+function buildInvestmentSeries(principal, monthlyContribution, years, annualRate, compoundsPerYear) {
+  const months = years * 12;
+  const series = [];
+  let balance = principal;
+
+  series.push({ label: "Start", value: balance });
+
+  for (let month = 1; month <= months; month += 1) {
+    balance += monthlyContribution;
+
+    if (month % Math.max(12 / compoundsPerYear, 1) === 0) {
+      balance *= 1 + annualRate / 100 / compoundsPerYear;
+    }
+
+    if (month % 12 === 0 || month === months) {
+      series.push({
+        label: `Year ${Math.ceil(month / 12)}`,
+        value: balance,
+      });
+    }
+  }
+
+  return series;
+}
+
+function createLinePath(points) {
+  return points
+    .map((point, index) => `${index === 0 ? "M" : "L"} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`)
+    .join(" ");
+}
+
+function createAreaPath(points, baselineY) {
+  if (!points.length) {
+    return "";
+  }
+
+  const line = createLinePath(points);
+  const last = points[points.length - 1];
+  const first = points[0];
+  return `${line} L ${last.x.toFixed(2)} ${baselineY.toFixed(2)} L ${first.x.toFixed(2)} ${baselineY.toFixed(2)} Z`;
+}
+
+function renderGrowthChart(lowSeries, baseSeries, highSeries) {
+  const width = 720;
+  const height = 360;
+  const padding = { top: 24, right: 24, bottom: 42, left: 62 };
+  const allValues = [...lowSeries, ...baseSeries, ...highSeries].map((point) => point.value);
+  const maxValue = Math.max(...allValues, 1);
+  const minValue = 0;
+  const usableWidth = width - padding.left - padding.right;
+  const usableHeight = height - padding.top - padding.bottom;
+  const steps = Math.max(baseSeries.length - 1, 1);
+
+  const mapPoints = (series) =>
+    series.map((point, index) => ({
+      x: padding.left + (usableWidth * index) / steps,
+      y:
+        padding.top +
+        usableHeight -
+        ((point.value - minValue) / (maxValue - minValue || 1)) * usableHeight,
+      value: point.value,
+      label: point.label,
+    }));
+
+  const lowPoints = mapPoints(lowSeries);
+  const basePoints = mapPoints(baseSeries);
+  const highPoints = mapPoints(highSeries);
+
+  const yTicks = 4;
+  const xTickStep = Math.max(Math.floor((basePoints.length - 1) / 4), 1);
+  const gridLines = [];
+  const xLabels = [];
+  const yLabels = [];
+
+  for (let tick = 0; tick <= yTicks; tick += 1) {
+    const value = minValue + ((maxValue - minValue) * tick) / yTicks;
+    const y = padding.top + usableHeight - (usableHeight * tick) / yTicks;
+    gridLines.push(
+      `<line x1="${padding.left}" y1="${y}" x2="${width - padding.right}" y2="${y}" stroke="rgba(24,79,69,0.12)" stroke-width="1" />`
+    );
+    yLabels.push(
+      `<text x="${padding.left - 10}" y="${y + 4}" text-anchor="end" font-size="12" fill="#5d6963">${formatCurrency(value)}</text>`
+    );
+  }
+
+  basePoints.forEach((point, index) => {
+    if (index % xTickStep === 0 || index === basePoints.length - 1) {
+      xLabels.push(
+        `<text x="${point.x}" y="${height - 14}" text-anchor="middle" font-size="12" fill="#5d6963">${point.label.replace("Year ", "Y")}</text>`
+      );
+    }
+  });
+
+  growthChart.innerHTML = `
+    <rect x="0" y="0" width="${width}" height="${height}" rx="18" fill="rgba(255,255,255,0.35)"></rect>
+    ${gridLines.join("")}
+    <path d="${createAreaPath(highPoints, height - padding.bottom)}" fill="rgba(184,109,59,0.08)"></path>
+    <path d="${createAreaPath(lowPoints, height - padding.bottom)}" fill="rgba(138,169,157,0.10)"></path>
+    <path d="${createLinePath(lowPoints)}" fill="none" stroke="#8aa99d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="${createLinePath(basePoints)}" fill="none" stroke="#184f45" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="${createLinePath(highPoints)}" fill="none" stroke="#b86d3b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+    ${basePoints
+      .map(
+        (point) =>
+          `<circle cx="${point.x}" cy="${point.y}" r="3.5" fill="#184f45"><title>${point.label}: ${formatCurrency(point.value)}</title></circle>`
+      )
+      .join("")}
+    ${yLabels.join("")}
+    ${xLabels.join("")}
+  `;
+}
+
+function updateInvestmentOutputs() {
+  const initialInvestment = clamp(Number(initialInvestmentInput.value));
+  const monthlyContribution = clamp(Number(monthlyContributionInput.value));
+  const years = clamp(Number(investmentYearsInput.value), 1);
+  const annualReturn = clamp(Number(annualReturnInput.value));
+  const variance = clamp(Number(returnVarianceInput.value));
+  const compoundsPerYear = clamp(Number(compoundFrequencyInput.value), 1);
+  const lowReturn = Math.max(annualReturn - variance, 0);
+  const highReturn = annualReturn + variance;
+
+  const lowSeries = buildInvestmentSeries(
+    initialInvestment,
+    monthlyContribution,
+    years,
+    lowReturn,
+    compoundsPerYear
+  );
+  const baseSeries = buildInvestmentSeries(
+    initialInvestment,
+    monthlyContribution,
+    years,
+    annualReturn,
+    compoundsPerYear
+  );
+  const highSeries = buildInvestmentSeries(
+    initialInvestment,
+    monthlyContribution,
+    years,
+    highReturn,
+    compoundsPerYear
+  );
+
+  const totalContributed = initialInvestment + monthlyContribution * years * 12;
+  const baseEndingValue = baseSeries[baseSeries.length - 1].value;
+  const investmentGain = baseEndingValue - totalContributed;
+  const lowEndingValue = lowSeries[lowSeries.length - 1].value;
+  const highEndingValue = highSeries[highSeries.length - 1].value;
+
+  totalContributedOutput.textContent = formatCurrency(totalContributed);
+  baseEndingValueOutput.textContent = formatCurrency(baseEndingValue);
+  investmentGainOutput.textContent = formatCurrency(investmentGain);
+  annualizedReturnOutput.textContent = formatPercent(annualReturn);
+  lowEndingValueOutput.textContent = formatCurrency(lowEndingValue);
+  highEndingValueOutput.textContent = formatCurrency(highEndingValue);
+  varianceBandOutput.textContent = `${formatPercent(lowReturn)} to ${formatPercent(highReturn)}`;
+  chartCaptionOutput.textContent = `Comparing ${years} years of growth at ${formatPercent(lowReturn)}, ${formatPercent(annualReturn)}, and ${formatPercent(highReturn)} annual returns.`;
+
+  renderGrowthChart(lowSeries, baseSeries, highSeries);
+}
+
 homePriceInput.addEventListener("input", deriveLoanAmount);
 downPaymentInput.addEventListener("input", deriveLoanAmount);
 loanAmountInput.addEventListener("input", () => {
@@ -227,5 +419,16 @@ form.addEventListener("submit", (event) => {
   updateOutputs();
 });
 
+investmentInputs.forEach((input) => {
+  input.addEventListener("input", updateInvestmentOutputs);
+  input.addEventListener("change", updateInvestmentOutputs);
+});
+
+investmentForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  updateInvestmentOutputs();
+});
+
 deriveLoanAmount();
 updateOutputs();
+updateInvestmentOutputs();

@@ -88,6 +88,12 @@ body::before {
   color: white;
 }
 
+.topbar-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
 .brand-copy {
   display: flex;
   flex-direction: column;
@@ -309,7 +315,22 @@ h3 {
   font: inherit;
 }
 
+.field select {
+  min-height: 50px;
+  padding: 0 14px;
+  border: 1px solid rgba(24, 79, 69, 0.13);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--text);
+  font: inherit;
+}
+
 .field input:focus {
+  outline: 2px solid rgba(24, 79, 69, 0.2);
+  border-color: var(--accent);
+}
+
+.field select:focus {
   outline: 2px solid rgba(24, 79, 69, 0.2);
   border-color: var(--accent);
 }
@@ -401,6 +422,58 @@ tbody tr:hover {
   background: rgba(24, 79, 69, 0.04);
 }
 
+.chart-panel {
+  padding: 28px;
+}
+
+.chart-shell {
+  padding: 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(24, 79, 69, 0.1);
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 24px;
+  height: 3px;
+  border-radius: 999px;
+}
+
+.swatch-low {
+  background: #8aa99d;
+}
+
+.swatch-base {
+  background: #184f45;
+}
+
+.swatch-high {
+  background: #b86d3b;
+}
+
+#growthChart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 @media (max-width: 920px) {
   .section-grid,
   .calculator-layout {
@@ -423,7 +496,8 @@ tbody tr:hover {
 
   .topbar,
   .table-header,
-  .hero-actions {
+  .hero-actions,
+  .topbar-links {
     flex-direction: column;
     align-items: flex-start;
   }

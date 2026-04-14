@@ -27,7 +27,10 @@
               <span class="brand-tagline">Personal Task Hub</span>
             </div>
           </div>
-          <a class="ghost-link" href="#mortgage-tool">Mortgage Tool</a>
+          <div class="topbar-links">
+            <a class="ghost-link" href="#mortgage-tool">Mortgage Tool</a>
+            <a class="ghost-link" href="#investment-tool">Investment Tool</a>
+          </div>
         </nav>
 
         <div class="hero-copy">
@@ -73,6 +76,14 @@
               <h3>Expandable task modules</h3>
               <p>
                 Add more tools as separate cards without redesigning the site.
+              </p>
+            </div>
+            <div class="feature-card muted-card">
+              <p class="card-label">New</p>
+              <h3>Compound interest growth</h3>
+              <p>
+                Compare lower, base, and higher return scenarios with a clean
+                visual growth curve over time.
               </p>
             </div>
           </article>
@@ -197,6 +208,109 @@
                 </thead>
                 <tbody id="scheduleBody"></tbody>
               </table>
+            </div>
+          </section>
+        </section>
+
+        <section class="calculator-section" id="investment-tool">
+          <div class="section-header">
+            <p class="section-label">Second tool</p>
+            <h2>Compound interest growth calculator</h2>
+            <p>
+              Model an investment over time, adjust return variance, and compare
+              lower, base, and higher growth paths.
+            </p>
+          </div>
+
+          <div class="calculator-layout">
+            <form class="panel form-panel" id="investment-form">
+              <div class="field-grid">
+                <label class="field">
+                  <span>Initial investment</span>
+                  <input type="number" id="initialInvestment" min="0" step="500" value="25000" />
+                </label>
+                <label class="field">
+                  <span>Monthly contribution</span>
+                  <input type="number" id="monthlyContribution" min="0" step="100" value="1000" />
+                </label>
+                <label class="field">
+                  <span>Time period (years)</span>
+                  <input type="number" id="investmentYears" min="1" step="1" value="20" />
+                </label>
+                <label class="field">
+                  <span>Expected annual return (%)</span>
+                  <input type="number" id="annualReturn" min="0" step="0.1" value="8" />
+                </label>
+                <label class="field">
+                  <span>Return variance (%)</span>
+                  <input type="number" id="returnVariance" min="0" step="0.1" value="2" />
+                </label>
+                <label class="field">
+                  <span>Compounding frequency</span>
+                  <select id="compoundFrequency">
+                    <option value="12" selected>Monthly</option>
+                    <option value="4">Quarterly</option>
+                    <option value="1">Yearly</option>
+                  </select>
+                </label>
+              </div>
+              <button class="primary-button" type="submit">Calculate growth</button>
+            </form>
+
+            <div class="results-column">
+              <section class="panel summary-panel">
+                <div class="summary-grid">
+                  <article class="summary-card">
+                    <span class="summary-label">Total contributed</span>
+                    <strong id="totalContributed">$0</strong>
+                  </article>
+                  <article class="summary-card">
+                    <span class="summary-label">Base ending value</span>
+                    <strong id="baseEndingValue">$0</strong>
+                  </article>
+                  <article class="summary-card">
+                    <span class="summary-label">Investment gain</span>
+                    <strong id="investmentGain">$0</strong>
+                  </article>
+                  <article class="summary-card">
+                    <span class="summary-label">Base annualized return</span>
+                    <strong id="annualizedReturn">0%</strong>
+                  </article>
+                </div>
+              </section>
+
+              <section class="panel insights-panel">
+                <div class="insight-row">
+                  <span>Lower scenario ending value</span>
+                  <strong id="lowEndingValue">$0</strong>
+                </div>
+                <div class="insight-row">
+                  <span>Higher scenario ending value</span>
+                  <strong id="highEndingValue">$0</strong>
+                </div>
+                <div class="insight-row">
+                  <span>Variance band</span>
+                  <strong id="varianceBand">0%</strong>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <section class="panel chart-panel">
+            <div class="table-header">
+              <div>
+                <p class="section-label">Visualization</p>
+                <h3>Growth over time</h3>
+              </div>
+              <p id="chartCaption">Comparing lower, base, and higher growth paths.</p>
+            </div>
+            <div class="chart-shell">
+              <div class="chart-legend">
+                <span class="legend-item"><i class="legend-swatch swatch-low"></i>Lower</span>
+                <span class="legend-item"><i class="legend-swatch swatch-base"></i>Base</span>
+                <span class="legend-item"><i class="legend-swatch swatch-high"></i>Higher</span>
+              </div>
+              <svg id="growthChart" viewBox="0 0 720 360" aria-label="Investment growth chart" role="img"></svg>
             </div>
           </section>
         </section>
