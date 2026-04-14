@@ -1,0 +1,341 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4463E86A9A76AD9A893A203E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0900A266AB121BF768158E9D /* Assets.xcassets */; };
+		88B53D5405050F0A8F8E0A19 /* VenkataTaskHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88F93CF165859B057E2756A /* VenkataTaskHubApp.swift */; };
+		A5263A207A50B5564237244E /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252D5536DAEB96C956BA3BED /* Formatting.swift */; };
+		BDE33A9F78E2B1207E1E74F7 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5BE3C781B1B1CBDE49A201 /* Models.swift */; };
+		CBDBD24760FC5E1D4376355B /* MortgageCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A6477C05270ECAAE13C0DA /* MortgageCalculatorView.swift */; };
+		DB3996E25FB337B57DF873BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFEF257C53B4CB357874EE /* ContentView.swift */; };
+		EB1589C24FAFC0DCB8F5BA69 /* ScenarioStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5162F348FC412C513A6FE2 /* ScenarioStore.swift */; };
+		F61F961390B26FF9EF5EC7D6 /* CompoundInterestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD1F6333BBD69DA9AD3E7D /* CompoundInterestView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0900A266AB121BF768158E9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0A5162F348FC412C513A6FE2 /* ScenarioStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioStore.swift; sourceTree = "<group>"; };
+		252D5536DAEB96C956BA3BED /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
+		6C035EA86A99D634D189AC6A /* VenkataTaskHubApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = VenkataTaskHubApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F5BE3C781B1B1CBDE49A201 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		A3CFEF257C53B4CB357874EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E88F93CF165859B057E2756A /* VenkataTaskHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenkataTaskHubApp.swift; sourceTree = "<group>"; };
+		F3A6477C05270ECAAE13C0DA /* MortgageCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortgageCalculatorView.swift; sourceTree = "<group>"; };
+		FDAD1F6333BBD69DA9AD3E7D /* CompoundInterestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundInterestView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		367EB918951BCE0D72016FE7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FDAD1F6333BBD69DA9AD3E7D /* CompoundInterestView.swift */,
+				A3CFEF257C53B4CB357874EE /* ContentView.swift */,
+				252D5536DAEB96C956BA3BED /* Formatting.swift */,
+				9F5BE3C781B1B1CBDE49A201 /* Models.swift */,
+				F3A6477C05270ECAAE13C0DA /* MortgageCalculatorView.swift */,
+				0A5162F348FC412C513A6FE2 /* ScenarioStore.swift */,
+				E88F93CF165859B057E2756A /* VenkataTaskHubApp.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		4A854E3C152F6601E73FC605 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6C035EA86A99D634D189AC6A /* VenkataTaskHubApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7AD552B67036621AA0927F88 = {
+			isa = PBXGroup;
+			children = (
+				A2C9CDA1A8EDD83432554CC0 /* Resources */,
+				367EB918951BCE0D72016FE7 /* Sources */,
+				4A854E3C152F6601E73FC605 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A2C9CDA1A8EDD83432554CC0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0900A266AB121BF768158E9D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F2A7F85CF581EE31282EEC59 /* VenkataTaskHubApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E002A5B011D9696DB98B4E4F /* Build configuration list for PBXNativeTarget "VenkataTaskHubApp" */;
+			buildPhases = (
+				2627B0D5156214D228AA33FD /* Sources */,
+				AC4E81DE9C98FF26EF34E2A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VenkataTaskHubApp;
+			packageProductDependencies = (
+			);
+			productName = VenkataTaskHubApp;
+			productReference = 6C035EA86A99D634D189AC6A /* VenkataTaskHubApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2ECBBA5475CBC396F8D21C0A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 59F8274B7090B7F7608A9B0B /* Build configuration list for PBXProject "VenkataTaskHubApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 7AD552B67036621AA0927F88;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 4A854E3C152F6601E73FC605 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2A7F85CF581EE31282EEC59 /* VenkataTaskHubApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC4E81DE9C98FF26EF34E2A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4463E86A9A76AD9A893A203E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2627B0D5156214D228AA33FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F61F961390B26FF9EF5EC7D6 /* CompoundInterestView.swift in Sources */,
+				DB3996E25FB337B57DF873BC /* ContentView.swift in Sources */,
+				A5263A207A50B5564237244E /* Formatting.swift in Sources */,
+				BDE33A9F78E2B1207E1E74F7 /* Models.swift in Sources */,
+				CBDBD24760FC5E1D4376355B /* MortgageCalculatorView.swift in Sources */,
+				EB1589C24FAFC0DCB8F5BA69 /* ScenarioStore.swift in Sources */,
+				88B53D5405050F0A8F8E0A19 /* VenkataTaskHubApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		24970EDC61656CB63C3F7FA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_CFBundleDisplayName = "Venkata Task Hub";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4FE3F6DAE22BCC18A5E4AD79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.venkat602609.VenkataTaskHubApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A9E04FAEEB0F8F3634719B66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.venkat602609.VenkataTaskHubApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BB399A07763BC9B73ECA3459 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_CFBundleDisplayName = "Venkata Task Hub";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		59F8274B7090B7F7608A9B0B /* Build configuration list for PBXProject "VenkataTaskHubApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9E04FAEEB0F8F3634719B66 /* Debug */,
+				4FE3F6DAE22BCC18A5E4AD79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E002A5B011D9696DB98B4E4F /* Build configuration list for PBXNativeTarget "VenkataTaskHubApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB399A07763BC9B73ECA3459 /* Debug */,
+				24970EDC61656CB63C3F7FA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2ECBBA5475CBC396F8D21C0A /* Project object */;
+}
