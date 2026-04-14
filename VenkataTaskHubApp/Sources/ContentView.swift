@@ -12,6 +12,11 @@ struct ContentView: View {
                 .tabItem {
                     Label("Investing", systemImage: "chart.line.uptrend.xyaxis")
                 }
+
+            AboutAppView()
+                .tabItem {
+                    Label("About", systemImage: "person.crop.circle")
+                }
         }
         .tint(Color("AccentColor"))
     }

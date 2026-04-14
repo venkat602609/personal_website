@@ -23,3 +23,8 @@ open VenkataTaskHubApp.xcodeproj
 - The app is written in SwiftUI.
 - It uses Apple's `Charts` framework for the compound-interest visualization.
 - You need full Xcode installed, not just Command Line Tools, to build and run the iOS app.
+
+## Included prep docs
+
+- `APP_STORE_PREP.md` for app listing and submission planning
+- `PRIVACY.md` for current privacy posture and likely App Store answers
