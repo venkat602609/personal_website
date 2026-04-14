@@ -28,8 +28,7 @@
             </div>
           </div>
           <div class="topbar-links">
-            <a class="ghost-link" href="#mortgage-tool">Mortgage Tool</a>
-            <a class="ghost-link" href="#investment-tool">Investment Tool</a>
+            <a class="ghost-link" href="#tool-suite">Tools</a>
           </div>
         </nav>
 
@@ -43,7 +42,7 @@
             setup.
           </p>
           <div class="hero-actions">
-            <a class="primary-link" href="#mortgage-tool">Try the calculator</a>
+            <a class="primary-link" href="#tool-suite">Open tools</a>
             <a class="secondary-link" href="#vision">See the direction</a>
           </div>
         </div>
@@ -89,230 +88,271 @@
           </article>
         </section>
 
-        <section class="calculator-section" id="mortgage-tool">
+        <section class="tool-suite" id="tool-suite">
           <div class="section-header">
-            <p class="section-label">First tool</p>
-            <h2>Mortgage amortization calculator</h2>
+            <p class="section-label">Tools</p>
+            <h2>Use one tool at a time.</h2>
             <p>
-              Use home price and down payment, or directly overwrite the loan
-              amount after editing.
+              Each tool now lives in its own tab. Later, these tabs can be
+              grouped into broader categories like finance, planning, or
+              utilities.
             </p>
           </div>
 
-          <div class="calculator-layout">
-            <form class="panel form-panel" id="mortgage-form">
-              <div class="field-grid">
-                <label class="field">
-                  <span>Home price</span>
-                  <input type="number" id="homePrice" min="0" step="1000" value="450000" />
-                </label>
-                <label class="field">
-                  <span>Down payment</span>
-                  <input type="number" id="downPayment" min="0" step="1000" value="90000" />
-                </label>
-                <label class="field">
-                  <span>Loan amount</span>
-                  <input type="number" id="loanAmount" min="0" step="1000" value="360000" />
-                </label>
-                <label class="field">
-                  <span>Interest rate (%)</span>
-                  <input type="number" id="interestRate" min="0" step="0.01" value="6.25" />
-                </label>
-                <label class="field">
-                  <span>Loan term (years)</span>
-                  <input type="number" id="loanTerm" min="1" step="1" value="30" />
-                </label>
-                <label class="field">
-                  <span>Extra monthly payment</span>
-                  <input type="number" id="extraPayment" min="0" step="50" value="0" />
-                </label>
-                <label class="field">
-                  <span>Annual property tax</span>
-                  <input type="number" id="propertyTax" min="0" step="100" value="5400" />
-                </label>
-                <label class="field">
-                  <span>Annual insurance</span>
-                  <input type="number" id="insurance" min="0" step="100" value="1800" />
-                </label>
-                <label class="field">
-                  <span>Monthly HOA</span>
-                  <input type="number" id="hoa" min="0" step="25" value="0" />
-                </label>
-                <label class="field">
-                  <span>Start date</span>
-                  <input type="month" id="startDate" value="2026-05" />
-                </label>
-              </div>
-              <button class="primary-button" type="submit">Calculate schedule</button>
-            </form>
-
-            <div class="results-column">
-              <section class="panel summary-panel">
-                <div class="summary-grid">
-                  <article class="summary-card">
-                    <span class="summary-label">Monthly P&I</span>
-                    <strong id="monthlyPI">$0</strong>
-                  </article>
-                  <article class="summary-card">
-                    <span class="summary-label">Estimated monthly total</span>
-                    <strong id="monthlyTotal">$0</strong>
-                  </article>
-                  <article class="summary-card">
-                    <span class="summary-label">Total interest</span>
-                    <strong id="totalInterest">$0</strong>
-                  </article>
-                  <article class="summary-card">
-                    <span class="summary-label">Payoff date</span>
-                    <strong id="payoffDate">-</strong>
-                  </article>
-                </div>
-              </section>
-
-              <section class="panel insights-panel">
-                <div class="insight-row">
-                  <span>Down payment ratio</span>
-                  <strong id="downPaymentRatio">0%</strong>
-                </div>
-                <div class="insight-row">
-                  <span>Total of all payments</span>
-                  <strong id="totalPayments">$0</strong>
-                </div>
-                <div class="insight-row">
-                  <span>Estimated months saved</span>
-                  <strong id="monthsSaved">0</strong>
-                </div>
-              </section>
-            </div>
+          <div class="tool-tabs" role="tablist" aria-label="Tool tabs">
+            <button
+              class="tool-tab is-active"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="mortgage-tool"
+              data-tab-target="mortgage-tool"
+            >
+              Mortgage
+            </button>
+            <button
+              class="tool-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="investment-tool"
+              data-tab-target="investment-tool"
+            >
+              Compound Interest
+            </button>
           </div>
 
-          <section class="panel table-panel">
-            <div class="table-header">
-              <div>
-                <p class="section-label">Schedule</p>
-                <h3>Amortization breakdown</h3>
-              </div>
-              <p id="tableCaption">Showing full monthly schedule.</p>
-            </div>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Month</th>
-                    <th>Date</th>
-                    <th>Payment</th>
-                    <th>Principal</th>
-                    <th>Interest</th>
-                    <th>Extra</th>
-                    <th>Balance</th>
-                  </tr>
-                </thead>
-                <tbody id="scheduleBody"></tbody>
-              </table>
-            </div>
-          </section>
-        </section>
+          <div class="tab-panels">
+            <section class="tool-panel is-active" id="mortgage-tool" role="tabpanel">
+              <div class="calculator-section">
+                <div class="section-header">
+                  <p class="section-label">First tool</p>
+                  <h2>Mortgage amortization calculator</h2>
+                  <p>
+                    Use home price and down payment, or directly overwrite the
+                    loan amount after editing.
+                  </p>
+                </div>
 
-        <section class="calculator-section" id="investment-tool">
-          <div class="section-header">
-            <p class="section-label">Second tool</p>
-            <h2>Compound interest growth calculator</h2>
-            <p>
-              Model an investment over time, adjust return variance, and compare
-              lower, base, and higher growth paths.
-            </p>
+                <div class="calculator-layout">
+                  <form class="panel form-panel" id="mortgage-form">
+                    <div class="field-grid">
+                      <label class="field">
+                        <span>Home price</span>
+                        <input type="number" id="homePrice" min="0" step="1000" value="450000" />
+                      </label>
+                      <label class="field">
+                        <span>Down payment</span>
+                        <input type="number" id="downPayment" min="0" step="1000" value="90000" />
+                      </label>
+                      <label class="field">
+                        <span>Loan amount</span>
+                        <input type="number" id="loanAmount" min="0" step="1000" value="360000" />
+                      </label>
+                      <label class="field">
+                        <span>Interest rate (%)</span>
+                        <input type="number" id="interestRate" min="0" step="0.01" value="6.25" />
+                      </label>
+                      <label class="field">
+                        <span>Loan term (years)</span>
+                        <input type="number" id="loanTerm" min="1" step="1" value="30" />
+                      </label>
+                      <label class="field">
+                        <span>Extra monthly payment</span>
+                        <input type="number" id="extraPayment" min="0" step="50" value="0" />
+                      </label>
+                      <label class="field">
+                        <span>Annual property tax</span>
+                        <input type="number" id="propertyTax" min="0" step="100" value="5400" />
+                      </label>
+                      <label class="field">
+                        <span>Annual insurance</span>
+                        <input type="number" id="insurance" min="0" step="100" value="1800" />
+                      </label>
+                      <label class="field">
+                        <span>Monthly HOA</span>
+                        <input type="number" id="hoa" min="0" step="25" value="0" />
+                      </label>
+                      <label class="field">
+                        <span>Start date</span>
+                        <input type="month" id="startDate" value="2026-05" />
+                      </label>
+                    </div>
+                    <button class="primary-button" type="submit">Calculate schedule</button>
+                  </form>
+
+                  <div class="results-column">
+                    <section class="panel summary-panel">
+                      <div class="summary-grid">
+                        <article class="summary-card">
+                          <span class="summary-label">Monthly P&amp;I</span>
+                          <strong id="monthlyPI">$0</strong>
+                        </article>
+                        <article class="summary-card">
+                          <span class="summary-label">Estimated monthly total</span>
+                          <strong id="monthlyTotal">$0</strong>
+                        </article>
+                        <article class="summary-card">
+                          <span class="summary-label">Total interest</span>
+                          <strong id="totalInterest">$0</strong>
+                        </article>
+                        <article class="summary-card">
+                          <span class="summary-label">Payoff date</span>
+                          <strong id="payoffDate">-</strong>
+                        </article>
+                      </div>
+                    </section>
+
+                    <section class="panel insights-panel">
+                      <div class="insight-row">
+                        <span>Down payment ratio</span>
+                        <strong id="downPaymentRatio">0%</strong>
+                      </div>
+                      <div class="insight-row">
+                        <span>Total of all payments</span>
+                        <strong id="totalPayments">$0</strong>
+                      </div>
+                      <div class="insight-row">
+                        <span>Estimated months saved</span>
+                        <strong id="monthsSaved">0</strong>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+
+                <section class="panel table-panel">
+                  <div class="table-header">
+                    <div>
+                      <p class="section-label">Schedule</p>
+                      <h3>Amortization breakdown</h3>
+                    </div>
+                    <p id="tableCaption">Showing full monthly schedule.</p>
+                  </div>
+                  <div class="table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Month</th>
+                          <th>Date</th>
+                          <th>Payment</th>
+                          <th>Principal</th>
+                          <th>Interest</th>
+                          <th>Extra</th>
+                          <th>Balance</th>
+                        </tr>
+                      </thead>
+                      <tbody id="scheduleBody"></tbody>
+                    </table>
+                  </div>
+                </section>
+              </div>
+            </section>
+
+            <section class="tool-panel" id="investment-tool" role="tabpanel" hidden>
+              <div class="calculator-section">
+                <div class="section-header">
+                  <p class="section-label">Second tool</p>
+                  <h2>Compound interest growth calculator</h2>
+                  <p>
+                    Model an investment over time, adjust return variance, and
+                    compare lower, base, and higher growth paths.
+                  </p>
+                </div>
+
+                <div class="calculator-layout">
+                  <form class="panel form-panel" id="investment-form">
+                    <div class="field-grid">
+                      <label class="field">
+                        <span>Initial investment</span>
+                        <input type="number" id="initialInvestment" min="0" step="500" value="25000" />
+                      </label>
+                      <label class="field">
+                        <span>Monthly contribution</span>
+                        <input type="number" id="monthlyContribution" min="0" step="100" value="1000" />
+                      </label>
+                      <label class="field">
+                        <span>Time period (years)</span>
+                        <input type="number" id="investmentYears" min="1" step="1" value="20" />
+                      </label>
+                      <label class="field">
+                        <span>Expected annual return (%)</span>
+                        <input type="number" id="annualReturn" min="0" step="0.1" value="8" />
+                      </label>
+                      <label class="field">
+                        <span>Return variance (%)</span>
+                        <input type="number" id="returnVariance" min="0" step="0.1" value="2" />
+                      </label>
+                      <label class="field">
+                        <span>Compounding frequency</span>
+                        <select id="compoundFrequency">
+                          <option value="12" selected>Monthly</option>
+                          <option value="4">Quarterly</option>
+                          <option value="1">Yearly</option>
+                        </select>
+                      </label>
+                    </div>
+                    <button class="primary-button" type="submit">Calculate growth</button>
+                  </form>
+
+                  <div class="results-column">
+                    <section class="panel summary-panel">
+                      <div class="summary-grid">
+                        <article class="summary-card">
+                          <span class="summary-label">Total contributed</span>
+                          <strong id="totalContributed">$0</strong>
+                        </article>
+                        <article class="summary-card">
+                          <span class="summary-label">Base ending value</span>
+                          <strong id="baseEndingValue">$0</strong>
+                        </article>
+                        <article class="summary-card">
+                          <span class="summary-label">Investment gain</span>
+                          <strong id="investmentGain">$0</strong>
+                        </article>
+                        <article class="summary-card">
+                          <span class="summary-label">Base annualized return</span>
+                          <strong id="annualizedReturn">0%</strong>
+                        </article>
+                      </div>
+                    </section>
+
+                    <section class="panel insights-panel">
+                      <div class="insight-row">
+                        <span>Lower scenario ending value</span>
+                        <strong id="lowEndingValue">$0</strong>
+                      </div>
+                      <div class="insight-row">
+                        <span>Higher scenario ending value</span>
+                        <strong id="highEndingValue">$0</strong>
+                      </div>
+                      <div class="insight-row">
+                        <span>Variance band</span>
+                        <strong id="varianceBand">0%</strong>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+
+                <section class="panel chart-panel">
+                  <div class="table-header">
+                    <div>
+                      <p class="section-label">Visualization</p>
+                      <h3>Growth over time</h3>
+                    </div>
+                    <p id="chartCaption">Comparing lower, base, and higher growth paths.</p>
+                  </div>
+                  <div class="chart-shell">
+                    <div class="chart-legend">
+                      <span class="legend-item"><i class="legend-swatch swatch-low"></i>Lower</span>
+                      <span class="legend-item"><i class="legend-swatch swatch-base"></i>Base</span>
+                      <span class="legend-item"><i class="legend-swatch swatch-high"></i>Higher</span>
+                    </div>
+                    <svg id="growthChart" viewBox="0 0 720 360" aria-label="Investment growth chart" role="img"></svg>
+                  </div>
+                </section>
+              </div>
+            </section>
           </div>
-
-          <div class="calculator-layout">
-            <form class="panel form-panel" id="investment-form">
-              <div class="field-grid">
-                <label class="field">
-                  <span>Initial investment</span>
-                  <input type="number" id="initialInvestment" min="0" step="500" value="25000" />
-                </label>
-                <label class="field">
-                  <span>Monthly contribution</span>
-                  <input type="number" id="monthlyContribution" min="0" step="100" value="1000" />
-                </label>
-                <label class="field">
-                  <span>Time period (years)</span>
-                  <input type="number" id="investmentYears" min="1" step="1" value="20" />
-                </label>
-                <label class="field">
-                  <span>Expected annual return (%)</span>
-                  <input type="number" id="annualReturn" min="0" step="0.1" value="8" />
-                </label>
-                <label class="field">
-                  <span>Return variance (%)</span>
-                  <input type="number" id="returnVariance" min="0" step="0.1" value="2" />
-                </label>
-                <label class="field">
-                  <span>Compounding frequency</span>
-                  <select id="compoundFrequency">
-                    <option value="12" selected>Monthly</option>
-                    <option value="4">Quarterly</option>
-                    <option value="1">Yearly</option>
-                  </select>
-                </label>
-              </div>
-              <button class="primary-button" type="submit">Calculate growth</button>
-            </form>
-
-            <div class="results-column">
-              <section class="panel summary-panel">
-                <div class="summary-grid">
-                  <article class="summary-card">
-                    <span class="summary-label">Total contributed</span>
-                    <strong id="totalContributed">$0</strong>
-                  </article>
-                  <article class="summary-card">
-                    <span class="summary-label">Base ending value</span>
-                    <strong id="baseEndingValue">$0</strong>
-                  </article>
-                  <article class="summary-card">
-                    <span class="summary-label">Investment gain</span>
-                    <strong id="investmentGain">$0</strong>
-                  </article>
-                  <article class="summary-card">
-                    <span class="summary-label">Base annualized return</span>
-                    <strong id="annualizedReturn">0%</strong>
-                  </article>
-                </div>
-              </section>
-
-              <section class="panel insights-panel">
-                <div class="insight-row">
-                  <span>Lower scenario ending value</span>
-                  <strong id="lowEndingValue">$0</strong>
-                </div>
-                <div class="insight-row">
-                  <span>Higher scenario ending value</span>
-                  <strong id="highEndingValue">$0</strong>
-                </div>
-                <div class="insight-row">
-                  <span>Variance band</span>
-                  <strong id="varianceBand">0%</strong>
-                </div>
-              </section>
-            </div>
-          </div>
-
-          <section class="panel chart-panel">
-            <div class="table-header">
-              <div>
-                <p class="section-label">Visualization</p>
-                <h3>Growth over time</h3>
-              </div>
-              <p id="chartCaption">Comparing lower, base, and higher growth paths.</p>
-            </div>
-            <div class="chart-shell">
-              <div class="chart-legend">
-                <span class="legend-item"><i class="legend-swatch swatch-low"></i>Lower</span>
-                <span class="legend-item"><i class="legend-swatch swatch-base"></i>Base</span>
-                <span class="legend-item"><i class="legend-swatch swatch-high"></i>Higher</span>
-              </div>
-              <svg id="growthChart" viewBox="0 0 720 360" aria-label="Investment growth chart" role="img"></svg>
-            </div>
-          </section>
         </section>
       </main>
     </div>

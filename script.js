@@ -68,6 +68,8 @@ const investmentInputs = [
   returnVarianceInput,
   compoundFrequencyInput,
 ];
+const toolTabs = Array.from(document.querySelectorAll(".tool-tab"));
+const toolPanels = Array.from(document.querySelectorAll(".tool-panel"));
 
 let loanAmountManuallyEdited = false;
 
@@ -404,6 +406,20 @@ function updateInvestmentOutputs() {
   renderGrowthChart(lowSeries, baseSeries, highSeries);
 }
 
+function activateToolTab(targetId) {
+  toolTabs.forEach((tab) => {
+    const isActive = tab.dataset.tabTarget === targetId;
+    tab.classList.toggle("is-active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+  });
+
+  toolPanels.forEach((panel) => {
+    const isActive = panel.id === targetId;
+    panel.classList.toggle("is-active", isActive);
+    panel.hidden = !isActive;
+  });
+}
+
 homePriceInput.addEventListener("input", deriveLoanAmount);
 downPaymentInput.addEventListener("input", deriveLoanAmount);
 loanAmountInput.addEventListener("input", () => {
@@ -429,6 +445,13 @@ investmentForm.addEventListener("submit", (event) => {
   updateInvestmentOutputs();
 });
 
+toolTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    activateToolTab(tab.dataset.tabTarget);
+  });
+});
+
 deriveLoanAmount();
 updateOutputs();
 updateInvestmentOutputs();
+activateToolTab("mortgage-tool");

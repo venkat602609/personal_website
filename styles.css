@@ -231,8 +231,47 @@ h3 {
 }
 
 .section-grid,
-.calculator-section {
+.calculator-section,
+.tool-suite {
   margin-top: 28px;
+}
+
+.tool-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.tool-tab {
+  min-height: 46px;
+  padding: 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.56);
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.tool-tab:hover {
+  transform: translateY(-1px);
+}
+
+.tool-tab.is-active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.tool-panel[hidden] {
+  display: none;
 }
 
 .section-grid {
