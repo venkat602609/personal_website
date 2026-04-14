@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venkata | Task Hub</title>
+    <meta
+      name="description"
+      content="A minimal personal website with practical tools, starting with a mortgage amortization calculator."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <nav class="topbar">
+          <div class="brand">
+            <span class="brand-mark">V</span>
+            <span>Personal Task Hub</span>
+          </div>
+          <a class="ghost-link" href="#mortgage-tool">Mortgage Tool</a>
+        </nav>
+
+        <div class="hero-copy">
+          <p class="eyebrow">Minimal. Practical. Extendable.</p>
+          <h1>A personal website built around tasks you actually use.</h1>
+          <p class="hero-text">
+            This first version gives you a clean landing page and a mortgage
+            amortization calculator. It is designed to grow into a private set
+            of everyday tools once you decide on a final site name and hosting
+            setup.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#mortgage-tool">Try the calculator</a>
+            <a class="secondary-link" href="#vision">See the direction</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="section-grid" id="vision">
+          <article class="panel intro-panel">
+            <p class="section-label">Website direction</p>
+            <h2>Start as a personal command center, not a brochure.</h2>
+            <p>
+              Since you do not have a website name yet, this version avoids hard
+              branding and focuses on utility. The structure leaves room for
+              more tools like budget planners, travel checklists, note boards,
+              or lightweight dashboards.
+            </p>
+          </article>
+
+          <article class="panel feature-panel">
+            <div class="feature-card">
+              <p class="card-label">Now</p>
+              <h3>Mortgage amortization</h3>
+              <p>
+                Estimate monthly payment, total interest, payoff date, and full
+                schedule with optional taxes, insurance, HOA, and extra payment.
+              </p>
+            </div>
+            <div class="feature-card muted-card">
+              <p class="card-label">Later</p>
+              <h3>Expandable task modules</h3>
+              <p>
+                Add more tools as separate cards without redesigning the site.
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <section class="calculator-section" id="mortgage-tool">
+          <div class="section-header">
+            <p class="section-label">First tool</p>
+            <h2>Mortgage amortization calculator</h2>
+            <p>
+              Use home price and down payment, or directly overwrite the loan
+              amount after editing.
+            </p>
+          </div>
+
+          <div class="calculator-layout">
+            <form class="panel form-panel" id="mortgage-form">
+              <div class="field-grid">
+                <label class="field">
+                  <span>Home price</span>
+                  <input type="number" id="homePrice" min="0" step="1000" value="450000" />
+                </label>
+                <label class="field">
+                  <span>Down payment</span>
+                  <input type="number" id="downPayment" min="0" step="1000" value="90000" />
+                </label>
+                <label class="field">
+                  <span>Loan amount</span>
+                  <input type="number" id="loanAmount" min="0" step="1000" value="360000" />
+                </label>
+                <label class="field">
+                  <span>Interest rate (%)</span>
+                  <input type="number" id="interestRate" min="0" step="0.01" value="6.25" />
+                </label>
+                <label class="field">
+                  <span>Loan term (years)</span>
+                  <input type="number" id="loanTerm" min="1" step="1" value="30" />
+                </label>
+                <label class="field">
+                  <span>Extra monthly payment</span>
+                  <input type="number" id="extraPayment" min="0" step="50" value="0" />
+                </label>
+                <label class="field">
+                  <span>Annual property tax</span>
+                  <input type="number" id="propertyTax" min="0" step="100" value="5400" />
+                </label>
+                <label class="field">
+                  <span>Annual insurance</span>
+                  <input type="number" id="insurance" min="0" step="100" value="1800" />
+                </label>
+                <label class="field">
+                  <span>Monthly HOA</span>
+                  <input type="number" id="hoa" min="0" step="25" value="0" />
+                </label>
+                <label class="field">
+                  <span>Start date</span>
+                  <input type="month" id="startDate" value="2026-05" />
+                </label>
+              </div>
+              <button class="primary-button" type="submit">Calculate schedule</button>
+            </form>
+
+            <div class="results-column">
+              <section class="panel summary-panel">
+                <div class="summary-grid">
+                  <article class="summary-card">
+                    <span class="summary-label">Monthly P&I</span>
+                    <strong id="monthlyPI">$0</strong>
+                  </article>
+                  <article class="summary-card">
+                    <span class="summary-label">Estimated monthly total</span>
+                    <strong id="monthlyTotal">$0</strong>
+                  </article>
+                  <article class="summary-card">
+                    <span class="summary-label">Total interest</span>
+                    <strong id="totalInterest">$0</strong>
+                  </article>
+                  <article class="summary-card">
+                    <span class="summary-label">Payoff date</span>
+                    <strong id="payoffDate">-</strong>
+                  </article>
+                </div>
+              </section>
+
+              <section class="panel insights-panel">
+                <div class="insight-row">
+                  <span>Down payment ratio</span>
+                  <strong id="downPaymentRatio">0%</strong>
+                </div>
+                <div class="insight-row">
+                  <span>Total of all payments</span>
+                  <strong id="totalPayments">$0</strong>
+                </div>
+                <div class="insight-row">
+                  <span>Estimated months saved</span>
+                  <strong id="monthsSaved">0</strong>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <section class="panel table-panel">
+            <div class="table-header">
+              <div>
+                <p class="section-label">Schedule</p>
+                <h3>Amortization breakdown</h3>
+              </div>
+              <p id="tableCaption">Showing full monthly schedule.</p>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Month</th>
+                    <th>Date</th>
+                    <th>Payment</th>
+                    <th>Principal</th>
+                    <th>Interest</th>
+                    <th>Extra</th>
+                    <th>Balance</th>
+                  </tr>
+                </thead>
+                <tbody id="scheduleBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
