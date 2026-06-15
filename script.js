@@ -30,6 +30,8 @@ const totalPaymentsOutput = document.querySelector("#totalPayments");
 const monthsSavedOutput = document.querySelector("#monthsSaved");
 const tableCaptionOutput = document.querySelector("#tableCaption");
 const scheduleBody = document.querySelector("#scheduleBody");
+const mortgageSchedulePanel = document.querySelector("#mortgage-schedule");
+const toggleScheduleButton = document.querySelector("#toggleSchedule");
 const liveInputs = [
   homePriceInput,
   downPaymentInput,
@@ -70,8 +72,11 @@ const investmentInputs = [
 ];
 const toolTabs = Array.from(document.querySelectorAll(".tool-tab"));
 const toolPanels = Array.from(document.querySelectorAll(".tool-panel"));
+const sectionTabs = Array.from(document.querySelectorAll(".section-tab"));
+const pageTabPanels = Array.from(document.querySelectorAll(".page-tab-panel"));
 
 let loanAmountManuallyEdited = false;
+let scheduleVisible = false;
 
 function clamp(value, min = 0) {
   return Number.isFinite(value) ? Math.max(value, min) : min;
@@ -208,6 +213,15 @@ function renderSchedule(rows) {
   scheduleBody.appendChild(fragment);
 }
 
+function setScheduleVisibility(isVisible) {
+  scheduleVisible = isVisible;
+  mortgageSchedulePanel.hidden = !scheduleVisible;
+  toggleScheduleButton.setAttribute("aria-expanded", String(scheduleVisible));
+  toggleScheduleButton.textContent = scheduleVisible
+    ? "Hide amortization schedule"
+    : "Show amortization schedule";
+}
+
 function updateOutputs() {
   const homePrice = clamp(Number(homePriceInput.value));
   const downPayment = clamp(Number(downPaymentInput.value));
@@ -241,7 +255,9 @@ function updateOutputs() {
   monthsSavedOutput.textContent = `${schedule.monthsSaved}`;
   tableCaptionOutput.textContent = `Showing ${schedule.rows.length} monthly entries.`;
 
-  renderSchedule(schedule.rows);
+  if (scheduleVisible) {
+    renderSchedule(schedule.rows);
+  }
 }
 
 function buildInvestmentSeries(principal, monthlyContribution, years, annualRate, compoundsPerYear) {
@@ -420,10 +436,60 @@ function activateToolTab(targetId) {
   });
 }
 
+function clearToolTabs() {
+  toolTabs.forEach((tab) => {
+    tab.classList.remove("is-active");
+    tab.setAttribute("aria-selected", "false");
+  });
+
+  toolPanels.forEach((panel) => {
+    panel.classList.remove("is-active");
+    panel.hidden = true;
+  });
+}
+
+function activatePageTab(targetId) {
+  sectionTabs.forEach((tab) => {
+    const isActive = tab.dataset.sectionTarget === targetId;
+    tab.classList.toggle("is-active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+  });
+
+  pageTabPanels.forEach((panel) => {
+    const isActive = panel.id === targetId;
+    panel.classList.toggle("is-active", isActive);
+    panel.hidden = !isActive;
+  });
+}
+
+function syncPageTabFromHash() {
+  const targetId = window.location.hash.replace("#", "");
+  const personalTargets = new Set(["personal-section", "tool-suite", "mortgage-tool", "investment-tool"]);
+  const professionalTargets = new Set(["professional-section", "profile"]);
+
+  if (personalTargets.has(targetId)) {
+    activatePageTab("personal-section");
+    return;
+  }
+
+  if (professionalTargets.has(targetId)) {
+    activatePageTab("professional-section");
+    return;
+  }
+
+  activatePageTab("professional-section");
+}
+
 function syncToolTabFromHash() {
   const targetId = window.location.hash.replace("#", "");
   const matchingPanel = toolPanels.find((panel) => panel.id === targetId);
-  activateToolTab(matchingPanel ? targetId : "mortgage-tool");
+
+  if (matchingPanel) {
+    activateToolTab(targetId);
+    return;
+  }
+
+  clearToolTabs();
 }
 
 homePriceInput.addEventListener("input", deriveLoanAmount);
@@ -441,6 +507,11 @@ form.addEventListener("submit", (event) => {
   updateOutputs();
 });
 
+toggleScheduleButton.addEventListener("click", () => {
+  setScheduleVisibility(!scheduleVisible);
+  updateOutputs();
+});
+
 investmentInputs.forEach((input) => {
   input.addEventListener("input", updateInvestmentOutputs);
   input.addEventListener("change", updateInvestmentOutputs);
@@ -452,14 +523,29 @@ investmentForm.addEventListener("submit", (event) => {
 });
 
 toolTabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
+  tab.addEventListener("click", (event) => {
+    event.preventDefault();
     activateToolTab(tab.dataset.tabTarget);
+    window.location.hash = tab.dataset.tabTarget;
   });
 });
 
-window.addEventListener("hashchange", syncToolTabFromHash);
+sectionTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const targetId = tab.dataset.sectionTarget;
+    activatePageTab(targetId);
+    window.location.hash = targetId;
+  });
+});
+
+window.addEventListener("hashchange", () => {
+  syncPageTabFromHash();
+  syncToolTabFromHash();
+});
 
 deriveLoanAmount();
+setScheduleVisibility(false);
 updateOutputs();
 updateInvestmentOutputs();
+syncPageTabFromHash();
 syncToolTabFromHash();
