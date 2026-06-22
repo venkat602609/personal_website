@@ -1,16 +1,16 @@
 :root {
-  --bg: #f6f7f4;
-  --bg-accent: #e5ece8;
+  --bg: #f8f7ff;
+  --bg-accent: #f3e7ff;
   --surface: rgba(255, 255, 255, 0.7);
   --surface-strong: rgba(255, 255, 255, 0.88);
   --border: rgba(44, 52, 52, 0.11);
-  --text: #17201f;
-  --muted: #5a6768;
-  --accent: #0f5b57;
-  --accent-alt: #2b5f8a;
-  --accent-warm: #a46135;
-  --accent-soft: #dcebe6;
-  --shadow: 0 24px 60px rgba(24, 32, 29, 0.08);
+  --text: #191724;
+  --muted: #66627a;
+  --accent: #2563eb;
+  --accent-alt: #d946ef;
+  --accent-warm: #f97316;
+  --accent-soft: #e0e7ff;
+  --shadow: 0 24px 60px rgba(37, 99, 235, 0.11);
   --radius-lg: 28px;
   --radius-md: 18px;
   --radius-sm: 12px;
@@ -31,7 +31,7 @@ body {
   color: var(--text);
   background:
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.86), transparent 30%),
-    linear-gradient(160deg, var(--bg) 0%, #f8faf9 42%, var(--bg-accent) 100%);
+    linear-gradient(160deg, var(--bg) 0%, #fff7ed 42%, var(--bg-accent) 100%);
 }
 
 body::before {
@@ -40,8 +40,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(rgba(24, 79, 69, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(24, 79, 69, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
   background-size: 42px 42px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), transparent 70%);
 }
@@ -135,8 +135,8 @@ body::before {
   border: 1px solid var(--border);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.56)),
-    linear-gradient(135deg, rgba(15, 91, 87, 0.12), transparent 58%),
-    linear-gradient(45deg, rgba(43, 95, 138, 0.09), transparent 65%);
+    linear-gradient(135deg, rgba(37, 99, 235, 0.12), transparent 58%),
+    linear-gradient(45deg, rgba(217, 70, 239, 0.09), transparent 65%);
   box-shadow: var(--shadow);
 }
 
@@ -221,7 +221,7 @@ h3 {
 .primary-button {
   background: var(--accent);
   color: white;
-  box-shadow: 0 18px 28px rgba(24, 79, 69, 0.25);
+  box-shadow: 0 18px 28px rgba(37, 99, 235, 0.25);
 }
 
 .secondary-link {
@@ -276,7 +276,7 @@ h3 {
 .section-tab.is-active {
   background: var(--accent);
   color: white;
-  box-shadow: 0 14px 24px rgba(15, 91, 87, 0.2);
+  box-shadow: 0 14px 24px rgba(37, 99, 235, 0.2);
 }
 
 .page-tab-panel[hidden] {
@@ -338,7 +338,7 @@ h3 {
 
 .repo-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(15, 91, 87, 0.3);
+  border-color: rgba(37, 99, 235, 0.3);
   background: rgba(255, 255, 255, 0.9);
 }
 
@@ -366,7 +366,7 @@ h3 {
   border-radius: var(--radius-lg);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.66)),
-    linear-gradient(135deg, rgba(15, 91, 87, 0.1), transparent 60%);
+    linear-gradient(135deg, rgba(37, 99, 235, 0.1), transparent 60%);
   box-shadow: var(--shadow);
 }
 
@@ -380,7 +380,7 @@ h3 {
   color: white;
   font-size: 2.8rem;
   font-weight: 800;
-  box-shadow: 0 18px 32px rgba(15, 91, 87, 0.24);
+  box-shadow: 0 18px 32px rgba(37, 99, 235, 0.24);
 }
 
 .app-copy p {
@@ -517,11 +517,11 @@ h3 {
   padding: 22px;
   border-radius: var(--radius-md);
   background: var(--surface-strong);
-  border: 1px solid rgba(24, 79, 69, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 .muted-card {
-  background: rgba(43, 95, 138, 0.08);
+  background: rgba(217, 70, 239, 0.08);
 }
 
 .section-header {
@@ -566,7 +566,7 @@ h3 {
 .field input {
   min-height: 50px;
   padding: 0 14px;
-  border: 1px solid rgba(24, 79, 69, 0.13);
+  border: 1px solid rgba(37, 99, 235, 0.13);
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.8);
   color: var(--text);
@@ -576,7 +576,7 @@ h3 {
 .field select {
   min-height: 50px;
   padding: 0 14px;
-  border: 1px solid rgba(24, 79, 69, 0.13);
+  border: 1px solid rgba(37, 99, 235, 0.13);
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.8);
   color: var(--text);
@@ -584,12 +584,12 @@ h3 {
 }
 
 .field input:focus {
-  outline: 2px solid rgba(24, 79, 69, 0.2);
+  outline: 2px solid rgba(37, 99, 235, 0.2);
   border-color: var(--accent);
 }
 
 .field select:focus {
-  outline: 2px solid rgba(24, 79, 69, 0.2);
+  outline: 2px solid rgba(37, 99, 235, 0.2);
   border-color: var(--accent);
 }
 
@@ -608,7 +608,7 @@ h3 {
   padding: 20px;
   border-radius: var(--radius-md);
   background: var(--surface-strong);
-  border: 1px solid rgba(24, 79, 69, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 .summary-label {
@@ -635,7 +635,7 @@ h3 {
   justify-content: space-between;
   gap: 16px;
   padding-bottom: 14px;
-  border-bottom: 1px solid rgba(24, 79, 69, 0.1);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 .insight-row:last-child {
@@ -654,7 +654,7 @@ h3 {
 .table-wrap {
   overflow: auto;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(24, 79, 69, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 table {
@@ -665,19 +665,19 @@ table {
 }
 
 thead {
-  background: rgba(24, 79, 69, 0.08);
+  background: rgba(37, 99, 235, 0.08);
 }
 
 th,
 td {
   padding: 14px 16px;
   text-align: left;
-  border-bottom: 1px solid rgba(24, 79, 69, 0.08);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.08);
   font-size: 0.95rem;
 }
 
 tbody tr:hover {
-  background: rgba(24, 79, 69, 0.04);
+  background: rgba(37, 99, 235, 0.04);
 }
 
 .chart-panel {
@@ -687,7 +687,7 @@ tbody tr:hover {
 .chart-shell {
   padding: 18px;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(24, 79, 69, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.1);
   background: rgba(255, 255, 255, 0.62);
 }
 
@@ -715,15 +715,15 @@ tbody tr:hover {
 }
 
 .swatch-low {
-  background: #8aa99d;
+  background: #60a5fa;
 }
 
 .swatch-base {
-  background: #0f5b57;
+  background: #2563eb;
 }
 
 .swatch-high {
-  background: #b86d3b;
+  background: #f97316;
 }
 
 #growthChart {
