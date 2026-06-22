@@ -464,7 +464,13 @@ function activatePageTab(targetId) {
 
 function syncPageTabFromHash() {
   const targetId = window.location.hash.replace("#", "");
-  const personalTargets = new Set(["personal-section", "tool-suite", "mortgage-tool", "investment-tool"]);
+  const personalTargets = new Set([
+    "personal-section",
+    "apps-built",
+    "tool-suite",
+    "mortgage-tool",
+    "investment-tool",
+  ]);
   const professionalTargets = new Set(["professional-section", "profile"]);
 
   if (personalTargets.has(targetId)) {
