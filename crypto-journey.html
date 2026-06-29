@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto Journey | Venkata Kishore Kajuluri</title>
+    <meta
+      name="description"
+      content="A simple mental model for the evolution of cryptography from character substitution to post-quantum cryptography."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <nav class="topbar">
+          <a class="brand ghost-link" href="index.html">
+            <span class="brand-mark">C</span>
+            <span class="brand-name">Crypto Journey</span>
+          </a>
+          <div class="topbar-links">
+            <a class="ghost-link" href="index.html">Home</a>
+            <a class="ghost-link" href="index.html#professional-section">Professional</a>
+            <a class="ghost-link" href="index.html#personal-section">Personal</a>
+          </div>
+        </nav>
+
+        <div class="hero-copy">
+          <p class="eyebrow">Simple mental model</p>
+          <h1>The crypto journey</h1>
+          <p class="hero-text">
+            Cryptography evolved from hiding letters to building mathematical
+            trust for the internet, devices, identity, signatures, and a future
+            where quantum computers may change the assumptions.
+          </p>
+        </div>
+      </header>
+
+      <main class="crypto-page">
+        <section class="content-card">
+          <p class="section-label">Big idea</p>
+          <h2>Every era answers the same question differently.</h2>
+          <p>
+            How do we protect information, prove identity, and trust messages
+            when an attacker can watch, copy, modify, or replay what we send?
+            The tools changed over time, but the goal stayed familiar: keep
+            secrets private, prove who sent something, and detect tampering.
+          </p>
+        </section>
+
+        <section class="crypto-timeline" aria-label="Major cryptography milestones">
+          <article class="timeline-item">
+            <span class="timeline-step">01</span>
+            <div class="timeline-copy">
+              <p class="card-label">Character substitution</p>
+              <h3>Hide the message by changing the symbols.</h3>
+              <p>
+                Early ciphers shifted or swapped letters. A simple example is
+                replacing A with D, B with E, and so on. The mental model was:
+                if the attacker does not know the substitution rule, the message
+                stays hidden.
+              </p>
+              <p class="timeline-note">Weakness: language patterns leak clues.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-step">02</span>
+            <div class="timeline-copy">
+              <p class="card-label">Mechanical and rotor ciphers</p>
+              <h3>Make substitution change continuously.</h3>
+              <p>
+                Instead of one fixed mapping, mechanical systems changed the
+                mapping as the message progressed. This made pattern analysis
+                harder and moved crypto toward repeatable machines and keys.
+              </p>
+              <p class="timeline-note">Mental shift: the machine and key become part of the security.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-step">03</span>
+            <div class="timeline-copy">
+              <p class="card-label">Prime factorization</p>
+              <h3>Use math that is easy one way and hard backward.</h3>
+              <p>
+                Multiplying large primes is easy for computers. Factoring the
+                result back into those primes is hard at useful sizes. This
+                idea helped unlock public-key cryptography, where people can
+                share public information without sharing the secret key.
+              </p>
+              <p class="timeline-note">Mental shift: security can come from computational hardness.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-step">04</span>
+            <div class="timeline-copy">
+              <p class="card-label">DES</p>
+              <h3>Standardize symmetric encryption for computers.</h3>
+              <p>
+                DES showed the value of a public, standardized encryption
+                algorithm. Both sides used the same secret key to encrypt and
+                decrypt. It was important historically, but its small key size
+                became too weak as computing power grew.
+              </p>
+              <p class="timeline-note">Weakness: short keys eventually become brute-forceable.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-step">05</span>
+            <div class="timeline-copy">
+              <p class="card-label">AES</p>
+              <h3>Modern symmetric encryption becomes fast and strong.</h3>
+              <p>
+                AES replaced DES for modern systems. It is efficient in
+                software and hardware, supports larger key sizes, and became a
+                foundation for protecting storage, network traffic, devices, and
+                cloud systems.
+              </p>
+              <p class="timeline-note">Mental model: use symmetric crypto for bulk data protection.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-step">06</span>
+            <div class="timeline-copy">
+              <p class="card-label">Asymmetric cryptography</p>
+              <h3>Split the key into public and private parts.</h3>
+              <p>
+                Asymmetric crypto lets one key be public while the matching
+                private key stays secret. This made secure key exchange,
+                digital signatures, certificates, and internet-scale trust
+                practical.
+              </p>
+              <p class="timeline-note">Mental model: public keys help strangers establish trust.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-step">07</span>
+            <div class="timeline-copy">
+              <p class="card-label">ECDSA</p>
+              <h3>Use elliptic curves for compact digital signatures.</h3>
+              <p>
+                Elliptic curve cryptography gives strong security with smaller
+                keys than older public-key systems. ECDSA became widely used
+                for signing software, authenticating systems, and proving that
+                a message came from the holder of a private key.
+              </p>
+              <p class="timeline-note">Mental model: signatures prove authorship and integrity.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-step">08</span>
+            <div class="timeline-copy">
+              <p class="card-label">Post-quantum cryptography</p>
+              <h3>Prepare for quantum computers changing the math.</h3>
+              <p>
+                Large quantum computers could break some widely used public-key
+                assumptions, including factoring and elliptic-curve discrete
+                logarithms. PQC uses different hard problems designed to resist
+                known quantum attacks.
+              </p>
+              <p class="timeline-note">Mental model: preserve trust before the old assumptions fail.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="content-card">
+          <p class="section-label">One-line summary</p>
+          <h2>From secrecy to trust infrastructure.</h2>
+          <p>
+            Crypto started as hiding messages. It became a system for encrypting
+            data, proving identity, signing software, protecting devices, and
+            preparing for a post-quantum future.
+          </p>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
