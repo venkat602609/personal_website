@@ -442,6 +442,94 @@ h3 {
   margin: 28px auto 0;
 }
 
+.learning-page {
+  max-width: 1080px;
+  margin: 28px auto 0;
+}
+
+.learning-hero h1 {
+  max-width: 11ch;
+}
+
+.learning-path-grid {
+  display: grid;
+  gap: 18px;
+  margin: 28px 0;
+}
+
+.learning-module {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 18px;
+  padding: 26px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow);
+}
+
+.learning-module p,
+.learning-module li,
+.content-card li {
+  color: var(--muted);
+  line-height: 1.62;
+}
+
+.learning-module h2 {
+  font-size: 1.75rem;
+  line-height: 1.08;
+}
+
+.learning-module h3 {
+  color: var(--accent);
+}
+
+.learning-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 18px;
+}
+
+.learning-columns ul,
+.sequence-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.project-note {
+  margin: 18px 0 0;
+  padding: 16px;
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  border-radius: var(--radius-md);
+  background: rgba(37, 99, 235, 0.06);
+  font-weight: 700;
+}
+
+.sequence-card,
+.capstone-card {
+  margin-bottom: 18px;
+}
+
+.sequence-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 28px;
+  margin-bottom: 18px;
+}
+
+blockquote {
+  margin: 24px 0;
+  padding: 22px;
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-md);
+  background: rgba(37, 99, 235, 0.07);
+  color: var(--text);
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
 .crypto-timeline {
   display: grid;
   gap: 18px;
@@ -817,6 +905,12 @@ tbody tr:hover {
   }
 
   .timeline-item {
+    grid-template-columns: 1fr;
+  }
+
+  .learning-module,
+  .learning-columns,
+  .sequence-list {
     grid-template-columns: 1fr;
   }
 

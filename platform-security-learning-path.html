@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Platform Security Learning Path | Venkata Kishore Kajuluri</title>
+    <meta
+      name="description"
+      content="A practical learning path for platform security, firmware, TPM, BMC, Linux kernel internals, reverse engineering, and attestation."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <nav class="topbar">
+          <a class="brand ghost-link" href="index.html">
+            <span class="brand-mark">P</span>
+            <span class="brand-name">Platform Security</span>
+          </a>
+          <div class="topbar-links">
+            <a class="ghost-link" href="index.html">Home</a>
+            <a class="ghost-link" href="index.html#professional-section">Professional</a>
+            <a class="ghost-link" href="crypto-journey.html">Crypto journey</a>
+          </div>
+        </nav>
+
+        <div class="hero-copy learning-hero">
+          <p class="eyebrow">Firmware, roots of trust, and Linux internals</p>
+          <h1>Platform security learning path</h1>
+          <p class="hero-text">
+            Modern platform security sits at the intersection of hardware,
+            firmware, operating systems, management controllers, cryptography,
+            and cloud infrastructure. A strong engineer in this space should
+            understand isolated components such as BIOS, UEFI, TPM, BMC, and
+            the Linux kernel, and also how they form a complete chain of trust
+            from silicon initialization to workload execution.
+          </p>
+        </div>
+      </header>
+
+      <main class="learning-page">
+        <section class="content-card">
+          <p class="section-label">Audience</p>
+          <h2>For engineers moving deeper into low-level platform trust.</h2>
+          <p>
+            This path is designed for engineers who already have exposure to
+            hardware security, secure boot, root of trust, PKI, cryptography,
+            systems security, or cloud infrastructure, and want to deepen their
+            understanding of low-level platform internals.
+          </p>
+        </section>
+
+        <section class="learning-path-grid" aria-label="Learning path modules">
+          <article class="learning-module">
+            <span class="timeline-step">01</span>
+            <div>
+              <p class="card-label">Linux kernel internals</p>
+              <h2>Start where hardware, firmware, drivers, and security boundaries meet.</h2>
+              <p>
+                The Linux kernel connects hardware, firmware, drivers, memory,
+                interrupts, devices, filesystems, networking, containers, and
+                security boundaries. Kernel fluency makes it easier to reason
+                about secure boot, device trust, DMA attacks, kernel
+                exploitation, attestation, virtualization, and cloud
+                infrastructure.
+              </p>
+              <div class="learning-columns">
+                <div>
+                  <h3>Recommended topics</h3>
+                  <ul>
+                    <li>Kernel architecture, process scheduling, syscalls, and modules</li>
+                    <li>Virtual memory, page tables, interrupts, and exceptions</li>
+                    <li>Device drivers, PCIe, DMA, IOMMU, and filesystems</li>
+                    <li>Kernel debugging, eBPF, hardening, and exploit mitigations</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Recommended resources</h3>
+                  <ul>
+                    <li>Linux kernel documentation and kernel hacking guides</li>
+                    <li>Linux Foundation kernel development and internals courses</li>
+                    <li>Bootlin Embedded Linux and kernel driver development courses</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="project-note">
+                Best hands-on project: build and boot a custom Linux kernel in
+                QEMU. Write a simple kernel module, add logging, expose a sysfs
+                interface, and debug it with gdb, dmesg, ftrace, and perf.
+              </p>
+            </div>
+          </article>
+
+          <article class="learning-module">
+            <span class="timeline-step">02</span>
+            <div>
+              <p class="card-label">BIOS, UEFI, and platform firmware</p>
+              <h2>Understand the bridge between platform initialization and OS boot.</h2>
+              <p>
+                UEFI is essential for anyone working on Secure Boot, firmware
+                signing, TPM measurements, capsule updates, boot policies, and
+                root-of-trust systems.
+              </p>
+              <div class="learning-columns">
+                <div>
+                  <h3>Recommended topics</h3>
+                  <ul>
+                    <li>SEC, PEI, DXE, BDS, runtime phases, drivers, and applications</li>
+                    <li>UEFI variables, Secure Boot keys, firmware volumes, and capsule updates</li>
+                    <li>SMM, measured boot, TPM event logs, bootloaders, and OS handoff</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Recommended resources</h3>
+                  <ul>
+                    <li>TianoCore and EDK II</li>
+                    <li>TianoCore documentation and EDK II learning material</li>
+                    <li>QEMU system emulation documentation</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="project-note">
+                Best hands-on project: build OVMF from EDK II, boot it in QEMU,
+                enable Secure Boot, enroll custom keys, sign a bootloader, and
+                inspect UEFI variables before and after boot.
+              </p>
+            </div>
+          </article>
+
+          <article class="learning-module">
+            <span class="timeline-step">03</span>
+            <div>
+              <p class="card-label">TPM 2.0 and measured boot</p>
+              <h2>Connect boot evidence to remote verification.</h2>
+              <p>
+                Secure Boot answers whether something was allowed to boot.
+                Measured boot answers what actually booted. TPM-based
+                attestation connects firmware state, bootloader state, kernel
+                state, and remote verification.
+              </p>
+              <div class="learning-columns">
+                <div>
+                  <h3>Recommended topics</h3>
+                  <ul>
+                    <li>PCRs, event logs, EK, AK, TPM quotes, and NV indexes</li>
+                    <li>Sealing, unsealing, policy-based authorization, and remote attestation</li>
+                    <li>Measured boot and TPM-backed key protection</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Recommended resources</h3>
+                  <ul>
+                    <li>Trusted Computing Group TPM 2.0 Library Specification</li>
+                    <li>tpm2-tools documentation and source repository</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="project-note">
+                Best hands-on project: use swtpm with QEMU, boot a Linux VM
+                with a virtual TPM, inspect PCR values, seal a secret to
+                specific PCRs, change the boot path, and observe unsealing fail
+                when measurements change.
+              </p>
+            </div>
+          </article>
+
+          <article class="learning-module">
+            <span class="timeline-step">04</span>
+            <div>
+              <p class="card-label">BMC, ILOM, Redfish, IPMI, PLDM, and MCTP</p>
+              <h2>Study the out-of-band control plane for server security.</h2>
+              <p>
+                Baseboard management controllers control power, firmware
+                updates, sensors, host recovery, remote console, inventory, and
+                out-of-band management. Vendor stacks such as ILOM, iLO, and
+                iDRAC are built around the same broad management concepts, even
+                when implementations differ.
+              </p>
+              <div class="learning-columns">
+                <div>
+                  <h3>Recommended topics</h3>
+                  <ul>
+                    <li>BMC architecture, host-BMC communication, Redfish, IPMI, PLDM, and MCTP</li>
+                    <li>Sensor monitoring, firmware update flows, power control, and serial-over-LAN</li>
+                    <li>BMC authentication, authorization, supply-chain risk, and host trust boundaries</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Recommended resources</h3>
+                  <ul>
+                    <li>OpenBMC and OpenBMC documentation</li>
+                    <li>DMTF Redfish standard</li>
+                    <li>DMTF MCTP and PLDM specifications</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="project-note">
+                Best hands-on project: run OpenBMC in an emulated environment,
+                interact with it using Redfish APIs, inspect D-Bus services,
+                simulate host state transitions, and study how firmware update
+                workflows are modeled.
+              </p>
+            </div>
+          </article>
+
+          <article class="learning-module">
+            <span class="timeline-step">05</span>
+            <div>
+              <p class="card-label">Platform hardware foundations</p>
+              <h2>Build the hardware model that firmware and kernel security rely on.</h2>
+              <p>
+                Platform security requires knowing how CPUs reset, how memory is
+                initialized, how devices access memory, how interrupts are
+                routed, and how privileged execution modes interact.
+              </p>
+              <div class="learning-columns">
+                <div>
+                  <h3>Recommended topics</h3>
+                  <ul>
+                    <li>CPU reset flow, x86-64 rings, SMM, VMX, virtualization, and microcode</li>
+                    <li>PCIe, MMIO, DMA, IOMMU / VT-d, ACPI, SMBus, I2C, SPI flash, and eSPI</li>
+                    <li>NUMA, memory training, Boot Guard, and hardware roots of trust</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Recommended resources</h3>
+                  <ul>
+                    <li>Intel 64 and IA-32 Architectures Software Developer's Manuals</li>
+                    <li>QEMU system emulation documentation</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="project-note">
+                Best hands-on project: create a QEMU-based lab with OVMF,
+                Linux, virtual PCI devices, and a virtual TPM. Trace the boot
+                flow from firmware to bootloader to kernel, then inspect how
+                devices appear through PCI enumeration, ACPI tables, and kernel
+                logs.
+              </p>
+            </div>
+          </article>
+
+          <article class="learning-module">
+            <span class="timeline-step">06</span>
+            <div>
+              <p class="card-label">Reverse engineering and firmware security</p>
+              <h2>Learn to reason about opaque firmware and boot-chain attack surfaces.</h2>
+              <p>
+                Reverse engineering is essential for understanding closed
+                firmware, bootloaders, binary drivers, and attack surfaces that
+                are not visible from source code. It also improves review of
+                firmware update mechanisms, cryptographic verification paths,
+                and platform initialization logic.
+              </p>
+              <div class="learning-columns">
+                <div>
+                  <h3>Recommended topics</h3>
+                  <ul>
+                    <li>x86-64 and ARM assembly, calling conventions, PE/COFF, and ELF</li>
+                    <li>UEFI binaries, bootloaders, firmware volumes, static analysis, and debugging</li>
+                    <li>Symbol recovery, vulnerability discovery, and firmware parser fuzzing</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Recommended resources</h3>
+                  <ul>
+                    <li>OpenSecurityTraining2 courses</li>
+                    <li>EDK II source code for real UEFI modules and firmware build structure</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="project-note">
+                Best hands-on project: extract an OVMF firmware image, identify
+                firmware volumes, locate UEFI drivers, open modules in Ghidra,
+                and trace how a selected DXE driver initializes.
+              </p>
+            </div>
+          </article>
+
+          <article class="learning-module">
+            <span class="timeline-step">07</span>
+            <div>
+              <p class="card-label">Linux hacking, exploitation, and hardening</p>
+              <h2>Pair offensive understanding with defensive kernel hardening.</h2>
+              <p>
+                Linux hacking should be approached from both offensive and
+                defensive perspectives. The goal is not just to exploit bugs,
+                but to understand why bugs exist, how attack surfaces are
+                exposed, and how modern mitigations work.
+              </p>
+              <div class="learning-columns">
+                <div>
+                  <h3>Recommended topics</h3>
+                  <ul>
+                    <li>Kernel memory corruption, use-after-free bugs, race conditions, and driver bugs</li>
+                    <li>Capabilities, namespaces, cgroups, LSM, seccomp, and syscall attack surface</li>
+                    <li>KASLR, SMEP, SMAP, KASAN, UBSAN, Syzkaller, fuzzing, and mitigation bypasses</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Recommended resources</h3>
+                  <ul>
+                    <li>Linux kernel documentation and kernel hacking guides</li>
+                    <li>Linux Foundation kernel internals training</li>
+                    <li>Bootlin kernel driver training</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="project-note">
+                Best hands-on project: write a deliberately vulnerable kernel
+                module, trigger the bug from user space, observe the failure
+                with KASAN enabled, then patch the module and verify the fix.
+              </p>
+            </div>
+          </article>
+
+          <article class="learning-module">
+            <span class="timeline-step">08</span>
+            <div>
+              <p class="card-label">Conferences, talks, and community learning</p>
+              <h2>Stay current through the communities publishing real-world lessons.</h2>
+              <p>
+                After the fundamentals, the fastest way to stay current is to
+                follow communities where firmware, kernel, platform security,
+                and cloud infrastructure engineers publish practical lessons.
+              </p>
+              <div class="learning-columns">
+                <div>
+                  <h3>Recommended communities</h3>
+                  <ul>
+                    <li>Open Source Firmware Conference</li>
+                    <li>Linux kernel and embedded Linux communities</li>
+                    <li>OpenBMC, TianoCore, DMTF Redfish, and OpenSecurityTraining2 communities</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Recommended habit</h3>
+                  <p>
+                    Watch conference talks with a lab notebook open. For every
+                    useful talk, extract one concept and turn it into a small
+                    reproducible experiment.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="content-card sequence-card">
+          <p class="section-label">Recommended sequence</p>
+          <h2>A practical order for building deep platform-security skill.</h2>
+          <ol class="sequence-list">
+            <li>Linux kernel internals</li>
+            <li>Kernel modules and device drivers</li>
+            <li>UEFI and EDK II</li>
+            <li>Secure Boot and measured boot</li>
+            <li>TPM 2.0 and attestation</li>
+            <li>BMC architecture and OpenBMC</li>
+            <li>Redfish, PLDM, MCTP, and server management protocols</li>
+            <li>PCIe, DMA, IOMMU, ACPI, and CPU architecture</li>
+            <li>Firmware reverse engineering</li>
+            <li>Kernel exploitation, fuzzing, and hardening</li>
+          </ol>
+          <p>
+            This order starts with the operating system, moves downward into
+            firmware and hardware trust, then comes back upward into management,
+            attestation, exploitation, and defense.
+          </p>
+        </section>
+
+        <section class="content-card capstone-card">
+          <p class="section-label">Capstone project</p>
+          <h2>Build a miniature server trust chain.</h2>
+          <p>
+            The best way to connect these topics is to build a small,
+            reproducible trust-chain lab that includes QEMU full-system
+            emulation, OVMF from EDK II, custom Secure Boot keys, a signed
+            bootloader, a signed Linux kernel, virtual TPM with swtpm, measured
+            boot into PCRs, event-log inspection, secret sealing and unsealing,
+            a remote attestation verifier, OpenBMC simulation, Redfish-based
+            host management, a firmware update experiment, a kernel module
+            experiment, and basic firmware reverse engineering.
+          </p>
+          <blockquote>
+            Can a remote verifier determine whether this machine booted the
+            expected firmware, bootloader, kernel, and configuration before
+            releasing a sensitive secret?
+          </blockquote>
+          <p>
+            That single question ties together BIOS, UEFI, TPM, BMC, Linux
+            kernel internals, cryptography, secure boot, measured boot,
+            attestation, firmware updates, and cloud-scale hardware security.
+          </p>
+        </section>
+
+        <section class="content-card">
+          <p class="section-label">Final perspective</p>
+          <h2>The complete platform is the mental model.</h2>
+          <p>
+            The most valuable platform-security engineers are not limited to
+            one layer. They understand how hardware initializes, how firmware
+            establishes trust, how the bootloader transfers control, how the
+            kernel manages devices and memory, how the BMC manages the server
+            out-of-band, and how cryptographic evidence can verify system state
+            remotely.
+          </p>
+          <p>
+            The goal is not to memorize every specification. The goal is to
+            build a mental model of the complete platform: silicon, firmware,
+            boot chain, operating system, management controller, and remote
+            verifier.
+          </p>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
